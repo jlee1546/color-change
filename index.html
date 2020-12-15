@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: green
+            }
+            button {
+                width: 100px;
+                height: 35px;
+                color: black;
+                border: 1px solid black;
+                border-radius: 10px;
+                box-shadow: 1px 1px 5px;
+            }
+            .color-change {
+                text-align: center;
+                top: 50%;
+                left: 40%;
+                position: absolute;    
+            }
+            .output {
+                text-align: center;
+                font-size: 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="output">
+            
+        </div>
+        <div class="color-change">
+            <button class="button" type="button" value="click">Click Me!</button> </br></br>
+            Click above to change screen color.
+        </div>
+
+        <script>
+            let randomHex;
+            let numbers = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f']
+            const output = document.querySelector('.output');
+
+
+            const clicker = document.querySelector('.button')
+            clicker.addEventListener('click', (e) => {
+                chooseRandomHex();
+                changeBG();
+                displayRandomHex();
+            });
+
+            function chooseRandomHex() {
+                let min = 0;
+                let max=16;
+                randomHex = numbers[Math.floor(Math.random() * (max-min) + min)]+''+numbers[Math.floor(Math.random() * (max-min) + min)]+''+numbers[Math.floor(Math.random() * (max-min) + min)]+''+numbers[Math.floor(Math.random() * (max-min) + min)]+''+numbers[Math.floor(Math.random() * (max-min) + min)]+''+numbers[Math.floor(Math.random() * (max-min) + min)]
+                console.log(randomHex)
+                return randomHex;
+            }
+            function changeBG() {
+                const body = document.body;
+                body.style.backgroundColor = '#'+randomHex
+            }
+            function displayRandomHex() {
+                
+                output.textContent = 'Your hex code is #' + randomHex;
+            }
+            
+            
+        </script>
+    </body>
+</html>
